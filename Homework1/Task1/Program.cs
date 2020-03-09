@@ -18,12 +18,20 @@ namespace Task1
                 case "-":
                     Console.WriteLine(firstNum - secondNum);
                     break;
+                case "/":
+                    if (secondNum == 0)
+                    {
+                        Console.WriteLine("Error");
+                    } else
+                    {
+                        Console.WriteLine(firstNum / secondNum);
+                    }
+                    break;
                 case "*":
                     Console.WriteLine(firstNum * secondNum);
                     break;
-                case "/":
-                    Console.WriteLine(firstNum / secondNum);
-                    break;
+                default:
+                    Console.WriteLine("The operation can't be executed");
             }
             Console.ReadLine();
         }
