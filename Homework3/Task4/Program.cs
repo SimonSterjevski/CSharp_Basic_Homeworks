@@ -55,11 +55,11 @@ namespace Task4
                             break;
                         default:
                             Console.WriteLine("Sorry. No such month found. Press enter and try again");
-                            break;
+                            Console.ReadLine();
+                            continue;
                     }
                     Console.ReadLine();
-                    if (monthNum > 0 && monthNum < 13) break;
-                   
+                    break;
                 }
                 else
                 {
