@@ -18,6 +18,9 @@ namespace Task1
                 case "-":
                     Console.WriteLine(firstNum - secondNum);
                     break;
+                case "*":
+                    Console.WriteLine(firstNum * secondNum);
+                    break;
                 case "/":
                     if (secondNum == 0)
                     {
@@ -27,11 +30,9 @@ namespace Task1
                         Console.WriteLine(firstNum / secondNum);
                     }
                     break;
-                case "*":
-                    Console.WriteLine(firstNum * secondNum);
-                    break;
                 default:
                     Console.WriteLine("The operation can't be executed");
+                    break;
             }
             Console.ReadLine();
         }

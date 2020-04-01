@@ -11,22 +11,22 @@ namespace Task1
             {
                 Console.Clear();
                 Console.WriteLine("Please enter a number");
-                bool ifValid = int.TryParse(Console.ReadLine(), out int n);
-                if (ifValid)
+                bool isValid = int.TryParse(Console.ReadLine(), out int n);
+                if (isValid)
                 {
                     if (n > 0 && n <= greeting.Length)
                     {
                         Console.Clear();
                         string newString = greeting.Substring(0, n);
                         Console.WriteLine(newString);
-                        Console.WriteLine($@"The new string has {newString.Length} characters");
+                        Console.WriteLine($"The new string has {newString.Length} characters");
                         Console.ReadLine();
                         break;
                     }
                     else
                     {
                         Console.Clear();
-                        Console.WriteLine($@"Error! Please press enter and insert number bigger than 0 and smaller than {greeting.Length + 1}");
+                        Console.WriteLine($"Error! Please press enter and insert number bigger than 0 and smaller than {greeting.Length + 1}");
                         Console.ReadLine();
                     }
                 }

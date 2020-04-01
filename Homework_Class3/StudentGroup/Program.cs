@@ -14,16 +14,16 @@ namespace StudentGroup
             if (groupNumber == "1")
             {
                 Console.WriteLine("Students in group 1 are:");
-                foreach (string name in studentsG1)
+                for (int i = 0; i < studentsG1.Length; i++)
                 {
-                    Console.WriteLine(name);
+                    Console.WriteLine(studentsG1[i]);
                 }
             } else if (groupNumber == "2")
             {
                 Console.WriteLine("Students in group 2 are:");
-                foreach (string name in studentsG2)
+                for (int j = 0; j < studentsG2.Length; j++)
                 {
-                    Console.WriteLine(name);
+                    Console.WriteLine(studentsG2[j]);
                 }
             } else
                 {

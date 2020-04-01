@@ -7,12 +7,12 @@ namespace Task2
 
         static string Sum(int num1, int num2)
         {
-            return $@"The result is {num1 + num2}";
+            return $"The result is {num1 + num2}";
         }
 
         static string Subtract(int num1, int num2)
         {
-            return $@"The result is {num1 - num2}";
+            return $"The result is {num1 - num2}";
         }
 
         static void Main(string[] args)
@@ -29,15 +29,15 @@ namespace Task2
                     while (true)
                     {
                         Console.Write("First number is: ");
-                        bool ifValidFirst = int.TryParse(Console.ReadLine(), out int firstNumber);
-                        if (ifValidFirst)
+                        bool isValidFirst = int.TryParse(Console.ReadLine(), out int firstNumber);
+                        if (isValidFirst)
                         {
                             while (true)
                             {
                                 Console.Clear();
                                 Console.Write("Second number is: ");
-                                bool ifValidSecond = int.TryParse(Console.ReadLine(), out int secondNumber);
-                                if (ifValidSecond)
+                                bool isValidSecond = int.TryParse(Console.ReadLine(), out int secondNumber);
+                                if (isValidSecond)
                                 {
                                     if (operation == "+")
                                     {

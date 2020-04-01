@@ -43,8 +43,8 @@ namespace Task2
                 Console.WriteLine("1) Eat");
                 Console.WriteLine("2) Play");
                 Console.WriteLine("3) Chase its tail");
-                bool ifNum = int.TryParse(Console.ReadLine(), out int number);
-                if (!ifNum || number < 1 || number > 3)
+                bool isNum = int.TryParse(Console.ReadLine(), out int number);
+                if (!isNum || number < 1 || number > 3)
                 {
                     Console.WriteLine("Please press enter and insert valid number!");
                     Console.ReadLine();
@@ -60,6 +60,8 @@ namespace Task2
                         case 3:
                             myDog.ChaseTail();
                             break;
+                        default:
+                            continue;
                     }
                     Console.ReadLine();
                     break;

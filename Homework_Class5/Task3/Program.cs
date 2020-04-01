@@ -69,20 +69,6 @@ namespace Task3
                 Speed = 280,
             };
 
-            string RaceCars(Car firstCar, Car secondCar)
-            {
-                if (firstCar.CalculateSpeed(firstCar.Driver) > secondCar.CalculateSpeed(secondCar.Driver))
-                {
-                    return $@"Car number 1 ({firstCar.Model}) drived by {firstCar.Driver.Name} was faster with max speed of {firstCar.Speed} km\h !!!";
-                }
-                else
-                {
-                    return $@"Car number 1 ({secondCar.Model}) drived by {secondCar.Driver.Name} was faster with max speed of {secondCar.Speed} km\h !!!";
-                }
-
-            }
-
-
             Car[] cars = { hyundai, mazda, porsche, ferarri };
             Driver[] drivers = { bob, greg, jill, anne };
 
@@ -104,8 +90,8 @@ namespace Task3
                                 Console.WriteLine($"{j + 1}) {cars[j].Model}");
                             }
                         }
-                        bool ifNum = int.TryParse(Console.ReadLine(), out int carNum);
-                        if (ifNum && carNum < 5 && carNum > 0 && carNum-1 != Array.IndexOf(cars, carSelected[0]))
+                        bool isNum = int.TryParse(Console.ReadLine(), out int carNum);
+                        if (isNum && carNum < 5 && carNum > 0 && carNum-1 != Array.IndexOf(cars, carSelected[0]))
                         {
                             carSelected[i - 1] = cars[carNum - 1];
                             while (true)
@@ -119,8 +105,8 @@ namespace Task3
                                         Console.WriteLine($"{l + 1}) {drivers[l].Name}");
                                     }
                                 }
-                                bool ifNum1 = int.TryParse(Console.ReadLine(), out int driverNum);
-                                if (ifNum1 && driverNum < 5 && driverNum > 0 && driverNum - 1 != Array.IndexOf(drivers, driverSelected[0]))
+                                bool isNum1 = int.TryParse(Console.ReadLine(), out int driverNum);
+                                if (isNum1 && driverNum < 5 && driverNum > 0 && driverNum - 1 != Array.IndexOf(drivers, driverSelected[0]))
                                 {
                                     driverSelected[i - 1] = drivers[driverNum - 1];
                                     cars[carNum - 1].Driver = drivers[driverNum - 1];
@@ -150,16 +136,25 @@ namespace Task3
                 string playAgain = Console.ReadLine();
                 if (playAgain == "y" || playAgain == "Y")
                 {
-                    
+                    continue;
                 } else
                 {
                     break;
                 }
                
             }
-           
-
-            
         }
+         static string RaceCars(Car firstCar, Car secondCar)
+            {
+                if (firstCar.CalculateSpeed(firstCar.Driver) > secondCar.CalculateSpeed(secondCar.Driver))
+                {
+                    return $@"Car number 1 ({firstCar.Model}) drived by {firstCar.Driver.Name} was faster with max speed of {firstCar.Speed} km\h !!!";
+                }
+                else
+                {
+                    return $@"Car number 1 ({secondCar.Model}) drived by {secondCar.Driver.Name} was faster with max speed of {secondCar.Speed} km\h !!!";
+                }
+
+            }
     }
 }
