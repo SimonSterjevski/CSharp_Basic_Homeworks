@@ -7,81 +7,53 @@ namespace Classes.Class
 {
     public class Employee : Member
     {
-        private int Salary { get; set; }
+        private double Salary { get; set; }
         public int HoursPerMonth { get; set; }
-        private int? Bonus { get; set; }
-        public void SetBonus()
-        {
-            if (HoursPerMonth > 160)
-            {
-                Bonus = 30 / 100;
-            }
-            else
-            {
-                Bonus = null;
-            }
-        }
-        public void SetSalary()
-        {
-            if (Bonus.HasValue)
-            {
-                Salary += HoursPerMonth * Bonus.Value;
-            }
-            else
-            {
-                Salary = Salary;
-            }
+        private double? Bonus { get; set; }
 
-        }
-        public Employee(string name, string surname, string username, string pass) : base(Roles.Employee)
+        public Employee(string name, string surname, string username, string pass, int hours, int age, int phone) : base(Roles.Employee)
         {
             FirstName = name;
             LastName = surname;
             UserName = username;
             Password = pass;
             Role = Roles.Employee;
-
+            HoursPerMonth = hours;
+            Age = age;
+            PhoneNumber = phone;
+            Bonus = SetBonus(HoursPerMonth);
+            Salary = SetSalary(Bonus, HoursPerMonth);
         }
-
-        public void AddMember(User user, List<User> members)
+        public double? SetBonus(int hours)
         {
-            DateTime now = DateTime.Today;
-            members.Add(user);
-            user.DateOfRegistration = now;
-        }
-
-        public void DeleteMember(User user, List<User> members)
-        {
-            foreach (Movie usermovies in user.Movies)
+            if (hours > 160)
             {
-                user.Movies.Remove(usermovies);
+                Bonus = 30 / 100;
+                return Bonus;
             }
-            members.Remove(user);
-        }
-
-        public void SeeMembers(List<User> members)
-        {
-            Console.WriteLine("List od registered members:");
-            foreach (User user in members)
+            else
             {
-                Console.WriteLine($"{user.FirstName} {user.LastName} ID number: {user.MemberNumber}");
+                Bonus = null;
+                return Bonus;
             }
-
         }
-
-        public void SeeAvaliableMovies(Movie[] all, List<Movie> rented)
+        public double SetSalary(double? bonus, int hours)
         {
-            Console.WriteLine("List od avaliable movies:");
-            foreach (Movie film in all)
+            Salary = 500;
+            if (bonus.Value > 0)
             {
-                int index = rented.IndexOf(film);
-                if (index == -1)
-                {
-                    Console.WriteLine(film.Title);
-                }
+                Salary += hours * bonus.Value;
+                return Salary;
+            }
+            else
+            {
+                return Salary;
             }
 
         }
+       
+
+       
 
     }
 }

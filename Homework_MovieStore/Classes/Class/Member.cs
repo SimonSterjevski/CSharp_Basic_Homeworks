@@ -13,7 +13,7 @@ namespace Classes.Class
         public string UserName { get; set; }
         public string Password { get; set; }
         public int PhoneNumber { get; set; }
-        public bool IsLogedIn { get; set; }
+        //public bool IsLogedIn { get; set; }
         public Roles Role { get; set; }
         public DateTime DateOfRegistration { get; set; }
         public void DisplayInfo()
@@ -23,7 +23,6 @@ namespace Classes.Class
         public Member(Roles role)
         {
             Role = role;
-            IsLogedIn = false;
         }
 
     }
