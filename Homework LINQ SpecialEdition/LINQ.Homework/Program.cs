@@ -51,24 +51,24 @@ namespace LINQ.Homework
             */
 
             // QUERIES!
-            //foreach (Artist artist in Artists)
-            //{
-            //    foreach (Album album in artist.Albums)
-            //        Console.WriteLine($"{artist.FullName}, {artist.Albums.Count} {album.Name}");
-              
-            //}
-            //Console.WriteLine("---------------------------------");
-            //Albums.ForEach(album => Console.WriteLine($"{album.Name}, {album.Genre}, {album.Year}, {album.Songs.Count}"));
-            //Console.WriteLine("---------------------------------");
-            //foreach (Album album in Albums)
-            //{
-            //    foreach (Song song in album.Songs)
-            //    {
-            //        Console.WriteLine($"{album.Name}, {song.Name}, {song.Duration}");
-            //    }
-            //}
-            //Console.WriteLine("---------------------------------");
-          
+            foreach (Artist artist in Artists)
+            {
+                foreach (Album album in artist.Albums)
+                    Console.WriteLine($"{artist.FullName}, {artist.Albums.Count} {album.Name}");
+
+            }
+            Console.WriteLine("---------------------------------");
+            Albums.ForEach(album => Console.WriteLine($"{album.Name}, {album.Genre}, {album.Year}, {album.Songs.Count}"));
+            Console.WriteLine("---------------------------------");
+            foreach (Album album in Albums)
+            {
+                foreach (Song song in album.Songs)
+                {
+                    Console.WriteLine($"{album.Name}, {song.Name}, {song.Duration}");
+                }
+            }
+            Console.WriteLine("---------------------------------");
+
 
             // - how many Songs start with the letter 'a' (case insensitive)
 
@@ -226,10 +226,36 @@ namespace LINQ.Homework
 
             // - print the name of the album that has most songs that contain letter 'a' in the name
 
+            var mostSongsThatContainA = from album in Albums
+                                         from song in album.Songs
+                                         where song.Name.Contains('a')
+                                         group album by album.Name;
+
+            var albumName = from name in mostSongsThatContainA
+                            orderby name.Count()
+                            select name;
+
+            Console.WriteLine($"The name of the album that has most songs that contain letter 'a' in the name is" +
+                $" {albumName.ToList().LastOrDefault().Key}");
+            //albumName.ToList().ForEach(album => Console.WriteLine(album.Key));
+            Console.WriteLine("---------------------------------");
+
 
             // - print the name of the artist that has most songs that end with letter 'd'
 
+            var mostSongsThatEndWithD = from artist in Artists
+                                        from album in artist.Albums
+                                        from song in album.Songs
+                                        where song.Name.EndsWith('d')
+                                        group artist by artist.FullName;
 
+            var artistName = from name in mostSongsThatEndWithD
+                             orderby name.Count()
+                             select name;
+
+            Console.WriteLine($"The name of the artist that has most songs that end with letter 'd' is " +
+                $"{artistName.ToList().LastOrDefault().Key}");
+            //artistName.ToList().ForEach(artist => Console.WriteLine(artist.Key));
 
 
             // ************ Don't mind the structure, focus on the lists declared on the beginning of Program.cs ****************
